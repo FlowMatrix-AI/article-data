@@ -1,0 +1,4 @@
+event,geo,landfall,raw_baseline,raw_peak,raw_multiple,raw_peak_day,raw_days_to_baseline,smoothed_baseline,smoothed_peak,smoothed_multiple,smoothed_peak_day,smoothed_days_to_baseline
+Hurricane Beryl,US-TX,2024-07-08,0.0000,100.0000,,1,10,0.0000,65.0000,,6,18
+Hurricane Helene,US-NC,2024-09-26,0.0000,100.0000,,2,5,0.0000,41.2857,,4,19
+Hurricane Milton,US-FL,2024-10-09,0.0000,100.0000,,1,8,4.7143,67.8571,14.4000,4,13

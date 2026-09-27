@@ -1,0 +1,28 @@
+# Environment: no env file is needed here, but never let one in
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.ruff_cache/
+
+# OS / editor
+.DS_Store
+*.log
+.idea/
+.vscode/
+
+# Fetched raw sources are restored by `just fetch-sources` (URL + SHA-256
+# recorded in src/article_data/fetch.py); never committed.
+outputs/raw/
+
+# Large regenerated outputs (the small aggregates beside them are committed fixtures)
+outputs/computed/eaglei-county-month.csv
+outputs/computed/eaglei-2025-county-week.csv

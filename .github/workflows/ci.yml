@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - uses: extractions/setup-just@v3
+      - run: just setup
+      - run: just check
+
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - uses: extractions/setup-just@v3
+      - run: just setup
+      # Small sources are fetched so the reproduction tests run in CI. The EAGLE-I
+      # archive (11.6 GB) is not; its tests read the committed aggregates and skip
+      # the full-table check.
+      - run: just fetch-sources eia861 acs
+      - run: just test
+
+  ok:
+    name: ok
+    needs: [check, test]
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          results="${{ join(needs.*.result, ',') }}"
+          case "$results" in *failure*|*cancelled*) exit 1 ;; esac
+          echo ok
