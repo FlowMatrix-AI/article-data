@@ -70,7 +70,7 @@ class TestPinnedSeries:
             "Hurricane Milton": 13,
         }
         assert t.loc["Hurricane Milton", "smoothed_multiple"] == 14.4
-        assert pd.isna(t.loc["Hurricane Beryl", "smoothed_multiple"])  # zero baseline in TX
+        assert t["smoothed_multiple"].isna()["Hurricane Beryl"]  # zero baseline in TX
 
     def test_national_figures(self, series):
         n = trends.national_table(series).set_index("event")
