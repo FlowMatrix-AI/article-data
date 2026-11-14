@@ -40,8 +40,12 @@ front page of the site, it does not belong here.** Concretely:
    files); keep it that way rather than adding a keyed endpoint.
 7. **Commit messages, branch names and issues are public too.** Write them as
    if they were part of the README. No internal ticket references, no client
-8. **Commit with the work email, never a personal one.** Author and committer on this repository are `name@flowmatrixai.com`. Git identity is published in every commit and cannot be corrected after the fact without rewriting history that others have already cloned. Set it per-repository (`git config user.email`) rather than relying on a global default, and check `git log --format='%an <%ae>'` before the first push.
    or project codenames, no "per the call with X".
+8. **Commit with your GitHub noreply address.** Author and committer on this
+   repository are `<id>+<username>@users.noreply.github.com`, never a work or
+   personal mailbox. Git identity is published in every commit and cannot be
+   corrected without rewriting history that others have already cloned. Check
+   `git log --format='%an <%ae> / %cn <%ce>'` before pushing.
 
 When in doubt, leave it out and ask. A leak here is permanent: history is
 public and a force-push does not remove what has already been cloned.
